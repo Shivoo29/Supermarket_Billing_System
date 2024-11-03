@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.10)
+project(SupermarketBillingSystem)
+
+set(CMAKE_CXX_STANDARD 11)
+
+# Include directories
+include_directories(include)
+
+# Source files
+add_executable(SupermarketBillingSystem src/main.cpp src/Product.cpp src/Inventory.cpp src/Billing.cpp)
+
+# For Google Test (assuming it's installed)
+enable_testing()
+add_executable(BillingTest tests/BillingTest.cpp src/Billing.cpp src/Product.cpp)
+target_link_libraries(BillingTest gtest gtest_main)
+add_test(NAME BillingTest COMMAND BillingTest)
